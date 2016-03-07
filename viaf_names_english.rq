@@ -1,0 +1,14 @@
+# get all the english names in VIAF
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?name
+FROM <http://www.viaf.org/viaf/102333412/rdf.xml>
+WHERE
+{
+?s foaf:primaryTopic ?person .
+?person schema:name ?name .
+FILTER (lang(?name) = 'en')
+}

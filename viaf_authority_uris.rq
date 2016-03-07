@@ -1,0 +1,11 @@
+# Get all the authorityFile uris from VIAF graph
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?authorityFile
+FROM <http://www.viaf.org/viaf/102333412/rdf.xml>
+WHERE
+{
+?s a skos:Concept .
+?s skos:inScheme ?authorityFile .
+}

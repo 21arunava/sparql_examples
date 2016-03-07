@@ -1,0 +1,47 @@
+# Build new graph with manifestation predicates for workgrouping
+
+PREFIX schema: <http://schema.org/>
+
+CONSTRUCT
+{
+<http://worldcat.org/entity/work/id/67201841> schema:workExample ?bib.
+?bib schema:workExample ?productModel.
+?productModel schema:isbn ?isbn.
+?productModel schema:bookFormat ?format.
+?bib schema:bookEdition ?edition
+}
+ 
+FROM <http://experiment.worldcat.org/entity/work/data/67201841>
+FROM <http://www.worldcat.org/oclc/660967222>
+FROM <http://www.worldcat.org/oclc/326799313>
+FROM <http://www.worldcat.org/oclc/886700555>
+FROM <http://www.worldcat.org/oclc/431591368>
+FROM <http://www.worldcat.org/oclc/188235414>
+FROM <http://www.worldcat.org/oclc/234290815>
+FROM <http://www.worldcat.org/oclc/718524646>
+FROM <http://www.worldcat.org/oclc/154684429>
+FROM <http://www.worldcat.org/oclc/756523287>
+FROM <http://www.worldcat.org/oclc/421705147>
+FROM <http://www.worldcat.org/oclc/481822502>
+FROM <http://www.worldcat.org/oclc/886581845>
+FROM <http://www.worldcat.org/oclc/804438865>
+FROM <http://www.worldcat.org/oclc/493390155>
+FROM <http://www.worldcat.org/oclc/876558200>
+FROM <http://www.worldcat.org/oclc/884006311>
+FROM <http://www.worldcat.org/oclc/768470693>
+FROM <http://www.worldcat.org/oclc/354466211>
+FROM <http://www.worldcat.org/oclc/255474401>
+FROM <http://www.worldcat.org/oclc/82671871>
+FROM <http://www.worldcat.org/oclc/754004270>
+FROM <http://www.worldcat.org/oclc/850798262>
+FROM <http://www.worldcat.org/oclc/717007464>
+FROM <http://www.worldcat.org/oclc/439080694>
+FROM <http://www.worldcat.org/oclc/768120530>
+FROM <http://www.worldcat.org/oclc/840398604>
+WHERE {
+
+<http://worldcat.org/entity/work/id/67201841> schema:workExample ?bib.
+?bib schema:workExample ?productModel. ?productModel schema:isbn ?isbn.
+OPTIONAL {?productModel schema:bookFormat ?format.}
+OPTIONAL {?bib schema:bookEdition ?edition}
+}
