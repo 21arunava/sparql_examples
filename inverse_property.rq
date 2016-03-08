@@ -1,0 +1,12 @@
+#Select all the uniform title names where the authority for the uniform title has an author URI of <http://viaf.org/viaf/102333412>
+
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?name
+FROM <http://viaf.org/viaf/174359768/rdf.xml>
+FROM <http://viaf.org/viaf/175982694/rdf.xml>
+FROM <http://viaf.org/viaf/179440625/rdf.xml>
+WHERE {
+?uniformTitle schema:author <http://viaf.org/viaf/102333412>.
+?uniformTitle schema:name ?name
+}

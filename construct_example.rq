@@ -1,0 +1,20 @@
+#construct
+
+PREFIX schema: <http://schema.org/>
+
+CONSTRUCT
+{
+<http://www.worldcat.org/oclc/660967222> schema:workExample ?productModel.
+?productModel schema:isbn ?isbn.
+?productModel schema:bookFormat ?format.
+?bib schema:bookEdition ?edition
+}
+
+FROM <http://www.worldcat.org/oclc/660967222>
+WHERE {
+
+<http://www.worldcat.org/oclc/660967222>schema:workExample ?productModel. 
+?productModel schema:isbn ?isbn.
+OPTIONAL {?productModel schema:bookFormat ?format.}
+OPTIONAL {?bib schema:bookEdition ?edition}
+}

@@ -1,0 +1,11 @@
+#union schema:name and schema:alternativeName flexible
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?name
+FROM <http://www.worldcat.org/oclc/38027615>
+WHERE {  
+{?s schema:name ?name}
+UNION  {?s schema:alternateName ?name}
+FILTER regex(STR(?s), "http://www.worldcat.org/oclc/")
+}

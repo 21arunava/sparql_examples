@@ -1,0 +1,22 @@
+# listing all the types
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?o
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s a ?o .
+}
+
+#alternatively
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?o
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s rdf:type ?o .
+}
+

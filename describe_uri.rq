@@ -1,0 +1,4 @@
+#DESCRIBE with no where clause. Should return CBD for the URI
+
+DESCRIBE <http://www.worldcat.org/oclc/660967222>
+FROM <http://www.worldcat.org/oclc/660967222>

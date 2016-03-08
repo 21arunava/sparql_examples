@@ -1,0 +1,11 @@
+# List all the creators and authors with the name of their associate bib
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?name ?creator ?author
+FROM <http://www.worldcat.org/oclc/660967222>
+WHERE {
+?s schema:name ?name .
+?s schema:creator ?creator .
+OPTIONAL {?s schema:author ?author} .
+}

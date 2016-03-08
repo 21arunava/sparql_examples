@@ -1,0 +1,9 @@
+# Listing all the objects
+PREFIX schema: <http://schema.org/>
+
+SELECT ?o
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s ?p ?o .
+}

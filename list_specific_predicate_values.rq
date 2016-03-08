@@ -1,0 +1,10 @@
+#List values of a specific predicate
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?name
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s schema:name ?name .
+}

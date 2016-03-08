@@ -1,0 +1,10 @@
+#Listing all the statements
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?s ?p ?o
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s ?p ?o .
+}

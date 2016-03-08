@@ -1,0 +1,7 @@
+#Describe all the subjects in the graph where the subjects are a schema:Person
+
+DESCRIBE ?s
+FROM <http://www.worldcat.org/oclc/660967222>
+WHERE {
+?s a http://schema.org/Person
+}

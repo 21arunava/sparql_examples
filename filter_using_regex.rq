@@ -1,0 +1,10 @@
+# Select all the schema:about predicates where the value is a URI containing the string dewey.info
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?about
+FROM <http://www.worldcat.org/oclc/660967222>
+WHERE {
+?s schema:about ?about .
+FILTER regex(STR(?about), “dewey.info”).
+}

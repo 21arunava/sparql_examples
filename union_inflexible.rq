@@ -1,0 +1,11 @@
+#union schema:name and schema:alternativeName inflexible
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?name
+FROM <http://www.worldcat.org/oclc/38027615>
+WHERE {
+{<http://www.worldcat.org/oclc/38027615> schema:name ?name}
+UNION
+{<http://www.worldcat.org/oclc/38027615> schema:alternateName ?name}
+}

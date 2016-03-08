@@ -1,0 +1,9 @@
+# Listing all the predicates
+PREFIX schema: <http://schema.org/>
+
+SELECT ?p
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s ?p ?o .
+}

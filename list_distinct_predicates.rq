@@ -1,0 +1,9 @@
+# Listing distinct the predicates
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?p
+FROM <http://worldcat.org/oclc/7977212>
+WHERE
+{
+?s ?p ?o .
+}
