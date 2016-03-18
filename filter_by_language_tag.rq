@@ -6,5 +6,5 @@ SELECT ?name
 FROM <http://worldcat.org/entity/work/id/67201841>
 WHERE {
 ?s schema:name ?name .
-FILTER(langMatches(lang(?name), ”en"))
+FILTER(langMatches(lang(?name), "en"))
 }
