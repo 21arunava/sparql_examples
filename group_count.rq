@@ -1,0 +1,14 @@
+# Group by "Base URL" for each subject heading and count them
+
+PREFIX schema: <http://schema.org/>
+
+SELECT ?baseURL count(?aboutURI)
+
+FROM <http://www.worldcat.org/oclc/37975719>
+
+WHERE {
+?s schema:about ?aboutURI .
+BIND(replace(STR(?aboutURI), "^(.*[\\/])*", "") AS ?subjectURLPart)
+BIND(replace(STR(?aboutURI), "/" + ?subjectURLPart, "") AS ?baseURL)
+}
+GROUP BY ?baseURL
