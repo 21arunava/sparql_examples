@@ -1,0 +1,29 @@
+#federated a query that looks at WorldCat and Wikidata. Basically this will get the Wikidata URI for a given OCLC Number
+
+PREFIX schema: <http://schema.org/> 
+PREFIX library: <http://purl.org/library/> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/> 
+PREFIX dct: <http://purl.org/dc/terms/>
+ 
+SELECT ?work ?workLabel
+FROM <http://www.worldcat.org/oclc/470488115> 
+WHERE {  
+<http://www.worldcat.org/oclc/470488115> schema:author ?creatorURI.
+BIND(replace(STR(?creatorURI), "^(.*[\\/])*", "") AS ?creatorID)  
+ 
+{SERVICE <https://query.wikidata.org/sparql> {
+  ?author wdt:P214 ?creatorID.
+  ?work wdt:P50 ?author .
+  ?work wdt:P1476 ?workLabel
+  } 
+}  
+UNION
+{
+SERVICE <http://bnb.data.bl.uk/sparql> {  
+?bl_creator <http://www.w3.org/2002/07/owl#sameAs> ?creatorURI.
+?work dct:creator ?bl_creator.
+?work dct:title ?workLabel
+ }
+} 
+}
+LIMIT 10

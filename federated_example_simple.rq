@@ -1,0 +1,14 @@
+#federated a query that looks at WorldCat and Wikidata. Basically this will get the Wikidata URI for a given OCLC Number
+
+PREFIX schema: <http://schema.org/> 
+PREFIX library: <http://purl.org/library/> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/> 
+ 
+SELECT ?work 
+FROM <http://www.worldcat.org/oclc/1210> 
+WHERE {  
+<http://www.worldcat.org/oclc/1210> library:oclcnum ?oclcNumber.  
+ 
+SERVICE <https://query.wikidata.org/sparql> {  
+?work wdt:P243 ?oclcNumber. } 
+}
