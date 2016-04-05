@@ -1,4 +1,5 @@
-#federated a query that looks at WorldCat and Wikidata. Basically this will get the Wikidata URI for a given OCLC Number
+# federated a query that looks at data from WorldCat, Wikidata and British Library. 
+# Will take the author URI from a WorldCat Bib graph and query Wikidata and British library for works that have the same author
 
 PREFIX schema: <http://schema.org/> 
 PREFIX library: <http://purl.org/library/> 
