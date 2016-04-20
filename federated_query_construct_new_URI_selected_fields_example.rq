@@ -1,0 +1,34 @@
+#federated a query that looks at WorldCat and Wikidata and pulls in the multi-language properties from Wikidata along with particular properties in WorldCat
+PREFIX schema: <http://schema.org/> 
+PREFIX library: <http://purl.org/library/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/> 
+ 
+CONSTRUCT
+{
+?worldcatSubjects ?p ?o. 
+<http://www.mybibdata.org/oclc/1210> schema:name ?wc_name.
+<http://www.mybibdata.org/oclc/1210> schema:description ?wc_description .
+<http://www.mybibdata.org/oclc/1210> schema:name ?name.
+<http://www.mybibdata.org/oclc/1210> schema:description ?description .
+<http://www.mybibdata.org/oclc/1210> schema:sameAs <http://www.worldcat.org/oclc/1210> .
+<http://www.mybibdata.org/oclc/1210> schema:sameAs ?work .
+}
+
+FROM <http://www.worldcat.org/oclc/1210> 
+WHERE {  
+?worldcatSubjects ?p ?o.
+<http://www.worldcat.org/oclc/1210> schema:name ?wc_name.
+<http://www.worldcat.org/oclc/1210> schema:description ?wc_description.
+<http://www.worldcat.org/oclc/1210> library:oclcnum ?oclcNumber.
+FILTER regex(STR(?worldcatSubjects), "worldcat.org").  
+ 
+SERVICE <https://query.wikidata.org/sparql> {  
+    ?work wdt:P243 ?oclcNumber. 
+    ?work rdfs:label ?name.
+    OPTIONAL {
+        ?work schema:description ?description .
+    }
+} 
+}
+
