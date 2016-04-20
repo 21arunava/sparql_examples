@@ -6,5 +6,5 @@ SELECT ?about
 FROM <http://www.worldcat.org/oclc/660967222>
 WHERE {
 ?s schema:about ?about .
-FILTER regex(STR(?about), “dewey.info”).
+FILTER regex(STR(?about), "dewey.info").
 }
