@@ -1,0 +1,19 @@
+SELECT ?type ?givenName ?surname
+WHERE {
+{
+?author dbp:viaf 102333412 .
+?s dbp:influenced ?author .
+?s foaf:givenName ?givenName .
+?s foaf:surname ?surname .
+BIND("influencedBy" AS ?type).
+}
+UNION
+{
+?author dbp:viaf 102333412 .
+?s dbp:influences ?author .
+?s foaf:givenName ?givenName .
+?s foaf:surname ?surname .
+BIND("influences" AS ?type).
+}
+}
+ORDER BY ?type
